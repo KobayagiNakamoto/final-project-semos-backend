@@ -4,6 +4,7 @@ const userRouter = require("./services/user");
 const jwt = require("express-jwt");
 const errorResponse = require("./lib/responses/errorResponse");
 const PORT = process.env.PORT || 3001;
+var cors = require("cors");
 
 const app = express();
 
@@ -13,6 +14,9 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
+
+// CORS
+app.use(cors());
 
 // Json body parser middlware
 app.use(express.json());
